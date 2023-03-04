@@ -1,5 +1,5 @@
 {
-	"name": "sb-register-V2",
+	"name": "sb-register-V3",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -37,5 +37,8 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"zod": "^3.20.6"
+	}
 }
