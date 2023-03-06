@@ -100,3 +100,12 @@ export const registrationWithEntriesSchema = z.object({
 	entries: z.array(entryWithImagesSchema).optional(),
 })
 export type registrationWithEntriesRecord = z.infer<typeof registrationWithEntriesSchema>
+
+export const acceptUserEmail = z.object({
+	email: z
+		.string({ required_error: 'Email is required' })
+		.email({ message: 'Email must be a valid email' })
+		.trim()
+		.optional(),
+})
+export type acceptUserEmailMessage = z.infer<typeof acceptUserEmail>
