@@ -5,3 +5,5 @@
 </script>
 
 <h1>Register Layout</h1>
+
+<slot />
