@@ -5,25 +5,36 @@
 	export let baseHeight: number = 200
 	export let gutter: number = 2
 	export let photoClass: string | undefined = undefined
-	export let onPhotoClick: ((photo: Photo) => any) | undefined = undefined
+
+	import { Modal } from '@lib/Components'
+	import EntryCard from './EntryCard.svelte'
+	let showModal = false
+	let currentPhoto: Photo | undefined
+	const handleToggleModal = (selectedPhoto: Photo | undefined) => {
+		currentPhoto = selectedPhoto
+		showModal = !showModal
+	}
 </script>
+
+<Modal modalOpen={showModal} on:close={() => handleToggleModal(undefined)}>
+	<svelte:fragment slot="body"><EntryCard {currentPhoto} /></svelte:fragment>
+</Modal>
 
 <div class="gallery">
 	<div class="section" style="--gutter: {gutter}px;">
 		{#each photos as photo}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div
+			<button
 				class={`image ${photoClass ?? ''}`}
-				on:click={() => onPhotoClick?.(photo)}
+				on:click={() => handleToggleModal(photo)}
 				style="
-					--ratio: {(photo.height * 100.0) / photo.width}%;
-					--width: {(baseHeight * photo.width) / photo.height}px;
-					--flex-grow: {(baseHeight * photo.width) / photo.height};
+					--ratio: {(photo.imageHeight * 100.0) / photo.imageWidth}%;
+					--width: {(baseHeight * photo.imageWidth) / photo.imageHeight}px;
+					--flex-grow: {(baseHeight * photo.imageWidth) / photo.imageHeight};
 				"
 			>
 				<div class="spacer" />
-				<Image src={photo.url} title={photo.title} class="img lazyload" />
-			</div>
+				<Image src={photo.imageURL} title={photo.title} class="img lazyload" />
+			</button>
 		{/each}
 		{#each new Array(10) as item}
 			<div class="dummy" />

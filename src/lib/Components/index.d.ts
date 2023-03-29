@@ -1,22 +1,17 @@
 import GalleryView from './GalleryView.svelte'
 
 export interface Photo {
-	/**
-	 * URL or unsolved URL of the photo.
-	 */
-	url: string | Promise<string>
-	/**
-	 * Width of the photo.
-	 */
-	width: number
-	/**
-	 * Height of the photo.
-	 */
-	height: number
-	/**
-	 * Extra information which shown as a tooltip text on the photo.
-	 */
-	title?: string
+	imageWidth: number
+	imageHeight: number
+	title: string
+	imageURL: string | Promise<string>
+	artistName: string
+	description: string
+	size: string
+	price: string
+	inOrOut: string
+	material: string
+	exhibitNumber: string
 	/**
 	 * Any properties could be useful in callback function onPhotoClick.
 	 */
