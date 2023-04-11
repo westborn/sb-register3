@@ -1,4 +1,4 @@
-import type { RequestHandler } from './register/$types'
+import type { RequestHandler } from './$types'
 import { SECRET_WEBAPP_API_URL } from '$env/static/private'
 
 // send a post request to the google sheet backend web app
@@ -9,7 +9,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	console.log('+Server.ts')
 	const data = await request.json()
 	console.log(data)
-
+	console.log(SECRET_WEBAPP_API_URL)
 	const response = await fetch(SECRET_WEBAPP_API_URL, {
 		method: 'POST',
 		headers: { 'Content-Type': 'text/plain' },

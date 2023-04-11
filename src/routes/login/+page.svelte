@@ -31,10 +31,10 @@
 >
 	<h1 class="text-center text-3xl font-medium dark:text-white">Login</h1>
 	<p class="text-center dark:text-white">We will send you a magic link to login!</p>
-	<div class="mb-6 grid gap-6 ">
+	<div class="mb-6 grid gap-6">
 		<div>
-			<label for="email" class="mb-2">Email</label>
-			<input type="text" id="email" name="email" required disabled={loading} />
+			<label for="email" class="label mb-2">Email</label>
+			<input class="input" type="text" id="email" name="email" required disabled={loading} />
 		</div>
 		<button type="submit" disabled={loading} class="w-full">
 			{#if loading}
