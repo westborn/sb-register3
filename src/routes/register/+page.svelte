@@ -7,12 +7,8 @@
 
 	let data: registrationWithEntriesRecord
 	let fetchResult: string
-	$: dispData = data
 
 	let loading = false
-
-	let btnClasses =
-		'text-sm rounded-md bg-primary-300 px-5 py-1 font-semibold text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-400 hover:shadow-lg focus:bg-primary-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-200 active:shadow-lg'
 
 	async function getDetailsByEmail(messageData: acceptUserEmailMessage) {
 		loading = true
@@ -31,8 +27,9 @@
 	}
 
 	const something: SubmitFunction = (input) => {
-		// console.log('something Input')
-		// console.log(Object.fromEntries(input?.data))
+		console.log('something Input')
+		console.log(form)
+		console.log(Object.fromEntries(input?.data))
 		// do something after the form submits
 
 		return async ({ result, update }) => {
@@ -65,7 +62,7 @@
 </script>
 
 <h1 class="text-2xl font-bold text-primary-500">Welcome to SvelteKit</h1>
-<p class="font-bold text-accent-500">
+<p class="text-accent-500 font-bold">
 	Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
 </p>
 
@@ -99,7 +96,6 @@
 			class="w-full flex-auto flex-col items-center space-y-2 pt-4"
 		>
 			<Input
-				color="primary"
 				name="email"
 				type="email"
 				label="Email"
@@ -108,7 +104,8 @@
 				disabled={loading}
 			/>
 			<div class="mt-6 flex justify-between">
-				<button type="submit" class={btnClasses}>New Registration </button>
+				<button type="submit" class="btn variant-filled-primary">New Registration</button>
+				<!-- <button type="submit" class={btnClasses}>New Registration </button> -->
 
 				<!-- <button type="button" on:click={() => submitRegister('view')} class={btnClasses}
 					>View Registration
@@ -124,12 +121,12 @@
 		{#if loading}
 			<div
 				style="border-top-color:transparent"
-				class="m-6 h-16 w-16 animate-spin rounded-full border-8 border-solid border-accent"
+				class="border-accent m-6 h-16 w-16 animate-spin rounded-full border-8 border-solid"
 			/>
 		{/if}
 	</div>
 </section>
 
-<pre> {JSON.stringify(fetchResult, null, 2)}</pre>
-<pre> {JSON.stringify(data?.registration.registrationId, null, 2)}</pre>
-<pre> {JSON.stringify(form, null, 2)}</pre>
+<p>{JSON.stringify(fetchResult, null, 2)}</p>
+<p>{JSON.stringify(data?.registration?.registrationId, null, 2)}</p>
+<p>{JSON.stringify(form, null, 2)}</p>
